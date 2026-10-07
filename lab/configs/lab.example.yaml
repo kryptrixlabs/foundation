@@ -1,0 +1,37 @@
+# KryptrixLabs Virtual Cybersecurity Laboratory v0.1 Example Configuration Template
+# File: lab/configs/lab.example.yaml
+# Note: Do not place real credentials or environment secrets in this file.
+
+lab:
+  name: "KryptrixLabs Virtual Cybersecurity Laboratory (Example)"
+  version: "0.1.0"
+  status: "TEMPLATE"
+
+environment:
+  hypervisor_target: "VMware Workstation"
+  min_memory_mb: 4096
+  recommended_memory_mb: 8192
+
+networks:
+  - name: "MGMT-NET"
+    subnet: "192.168.10.0/24"
+    adapter_type: "VMnet1 (Host-Only)"
+  - name: "TEST-NET"
+    subnet: "10.0.20.0/24"
+    adapter_type: "VMnet8 (NAT / Host Isolated)"
+
+machines:
+  - id: "VM-MGMT-01"
+    name: "Lab Controller Node"
+    role: "MANAGEMENT_CONTROLLER"
+    network: "MGMT-NET"
+    ip_address: "192.168.10.10"
+  - id: "VM-TGT-01"
+    name: "Target System"
+    role: "TARGET_WORKSTATION"
+    network: "TEST-NET"
+    ip_address: "10.0.20.50"
+
+safety:
+  internet_access: "DISABLED_BY_DEFAULT"
+  strict_host_isolation: true
