@@ -70,6 +70,7 @@ New ideas must be treated as independent future work. They do not reopen the com
 
 ### Future project registry
 
+- **KRYP-BOT-001 — KryptrixLabs Bot:** approved and planned as a separate repository/product; see `FUTURE_PROJECTS.md`.
 - **KRYP-001 — SyncBridge:** specification complete; implementation deferred.
 - **KRYP-002 — Automated Lab Provisioning:** future VMware/VirtualBox provisioning and lifecycle automation.
 - **KRYP-003 — Detection Engineering Lab:** future telemetry/Sigma/SIEM exercises.
