@@ -1,0 +1,42 @@
+name: Foundation CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  controller-validation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile Python sources
+        run: |
+          python -m compileall software tests
+
+      - name: Run controller unit tests
+        run: |
+          python -m unittest discover -s tests/unit -p 'test_*.py' -v
+
+      - name: Validate lab configuration
+        run: |
+          python software/cli/kryp_lab.py validate
+
+      - name: Run controller doctor
+        run: |
+          python software/cli/kryp_lab.py doctor
