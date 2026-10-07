@@ -1,0 +1,97 @@
+# KryptrixLabs Virtual Cybersecurity Laboratory v0.1 Configuration
+# File: lab/configs/lab.yaml
+# Purpose: Declarative schema for KryptrixLabs Lab v0.1 environment topology, network subnets, and host definitions.
+
+lab:
+  name: "KryptrixLabs Virtual Cybersecurity Laboratory"
+  version: "0.1.0"
+  status: "DEVELOPMENT"
+  author: "KryptrixLabs Security Engineering"
+
+environment:
+  hypervisor_target: "VMware Workstation"
+  host_os: "Windows 11 Pro 64-bit"
+  min_memory_mb: 4096
+  recommended_memory_mb: 8192
+  min_disk_gb: 15
+
+networks:
+  - name: "MGMT-NET"
+    subnet: "192.168.10.0/24"
+    gateway: "192.168.10.1"
+    adapter_type: "VMnet1 (Host-Only)"
+    dhcp_enabled: false
+    description: "Management and lab controller interface. Air-gapped from internet."
+    trust_level: "HIGH"
+
+  - name: "TEST-NET"
+    subnet: "10.0.20.0/24"
+    gateway: "10.0.20.1"
+    adapter_type: "VMnet8 (NAT / Host Isolated)"
+    dhcp_enabled: true
+    description: "Isolated target and sensor network for controlled experiments."
+    trust_level: "ISOLATED"
+
+machines:
+  - id: "VM-MGMT-01"
+    name: "Kryptrix Lab Controller Node"
+    role: "MANAGEMENT_CONTROLLER"
+    network: "MGMT-NET"
+    ip_address: "192.168.10.10"
+    os: "Ubuntu Server 24.04 LTS"
+    specs:
+      cpus: 2
+      ram_mb: 2048
+      disk_gb: 10
+    status: "PLANNED"
+
+  - id: "VM-TGT-01"
+    name: "Defensive Target Workstation"
+    role: "TARGET_WORKSTATION"
+    network: "TEST-NET"
+    ip_address: "10.0.20.50"
+    os: "Alpine Linux 3.20 / Windows Subsystem Target"
+    specs:
+      cpus: 1
+      ram_mb: 1024
+      disk_gb: 5
+    status: "PLANNED"
+
+  - id: "VM-SNS-01"
+    name: "Telemetry Sensor & Logging Node"
+    role: "TELEMETRY_SENSOR"
+    network: "TEST-NET"
+    ip_address: "10.0.20.100"
+    os: "Ubuntu Server 24.04 LTS"
+    specs:
+      cpus: 1
+      ram_mb: 1024
+      disk_gb: 5
+    status: "PLANNED"
+
+services:
+  - name: "Lab Telemetry Collector"
+    machine: "VM-SNS-01"
+    port: 514
+    protocol: "UDP"
+    description: "Centralized Syslog collector for lab telemetry"
+    status: "PLANNED"
+
+  - name: "KRYP-001 SyncBridge Service Prototype"
+    machine: "VM-MGMT-01"
+    port: 8443
+    protocol: "TCP"
+    description: "Kryptrix SyncBridge secure synchronization service"
+    status: "PLANNED"
+
+monitoring:
+  logging_enabled: true
+  packet_capture_enabled: false
+  telemetry_retention_days: 7
+  syslog_server: "10.0.20.100"
+
+safety:
+  internet_access: "DISABLED_BY_DEFAULT"
+  promiscuous_mode: "RESTRICTED_TO_SENSOR"
+  auto_snapshot_before_experiment: true
+  strict_host_isolation: true
