@@ -1,0 +1,41 @@
+{
+  "release_id": "KRYP-MANUAL-v1.0-FINAL",
+  "version": "v1.0 Final Release",
+  "release_date": "2026-08-16",
+  "lifecycle_status": "FINAL RELEASE v1.0 — VERIFIED",
+  "hashes": {
+    "master_manuscript": "e9cf747bd6c0c2d68783872e50e173dbc5f16a39c5daf5d0d5cac821b4d6a060",
+    "production_pdf": "48ea34fcf1c789aaf440a36ea94b3530764a81b524c9237d048785eaaa27e43f",
+    "publication_manifest": "95784f38ef97b21cd9d6ebaa77453639e29fe5e2f8e547dc8667fa709a1a2f5e"
+  },
+  "chapter_inventory": {
+    "total_core_chapters": 31,
+    "chapter_sequence": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+    "core_word_count": 65352
+  },
+  "appendix_inventory": {
+    "Appendix_A": {"path":"APPENDICES/appendix-a-glossary-and-acronyms.md","sha256":"e437353a5d121b27dc4171703d56e1c639a4c6c2c4b3f868e0b9499908d72b02","words":7206},
+    "Appendix_B": {"path":"APPENDICES/appendix-b-command-reference.md","sha256":"b27c2d4556a662f1d68e5fb39fbab05445060ebe2ce9153040326d2c953b9cdd","words":8117},
+    "Appendix_C": {"path":"APPENDICES/appendix-c-tool-reference.md","sha256":"8534d2f7cecb28744832cdfd307d848be738467dc7a9243ab96137221e914ec6","words":20500},
+    "Appendix_D": {"path":"APPENDICES/appendix-d-learning-resources.md","sha256":"f6aa0117e23c26cad1b68ba3e38a6cfadd7e59cfbf8ff25a4c4aae038135fa02","words":1183},
+    "Appendix_E": {"path":"APPENDICES/appendix-e-project-laboratory.md","sha256":"f4b6e2cbc7bccf9b0978380f216dd9ce2e22b671ebea3df44f6fb5dcb03465cc","words":10923},
+    "Appendix_F": {"path":"APPENDICES/appendix-f-interview-preparation.md","sha256":"dea6fb6ecae79a26dbb61e6be2b648586d3290657304fd9c175ed309c5e94d7a","words":10392},
+    "Appendix_G": {"path":"APPENDICES/appendix-g-documentation-standards.md","sha256":"72138e9f5327ee65c54510a4015cd1e6ed76ae4eadb0163bc573b64eb8947e30","words":930},
+    "Appendix_H": {"path":"APPENDICES/appendix-h-certification-roadmap.md","sha256":"30f19ccc113183688310b0bffb809f4201436f58c833c42c5e634ec7fabbf7b1","words":1848},
+    "Appendix_I": {"path":"APPENDICES/appendix-i-trackers-and-templates.md","sha256":"9ad3f42d3148ccbb2919e8eb4530938336f178ccca828af84cf098f820cd4c20","words":2205},
+    "Appendix_J": {"path":"APPENDICES/appendix-j-knowledge-vault.md","sha256":"4c5738f96051097c44736059b96364b5a787b9ce844e565ff378041eb5dc8fb4","words":1153}
+  },
+  "metrics": {
+    "total_manuscript_words": 129809,
+    "total_manuscript_lines": 12872,
+    "pdf_file_size_bytes": 9612495,
+    "tables_inventoried": 132,
+    "figures_inventoried": 37,
+    "templates_inventoried": 21
+  },
+  "qa_status": {
+    "automated_qa_checks": "16/16 PASSED",
+    "release_integrity_checks": "3/3 PASSED",
+    "alphabetical_sorting_check": "100% PASSED (Appendix A Table A.1 Acronyms A-Z)"
+  }
+}
